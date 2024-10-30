@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Խոհարարի Անիմացիա</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e3f2fd;
+            overflow: hidden;
+        }
+
+        .animation-container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .chef {
+            width: 100px;
+            height: 150px;
+            background-image: url('https://th.bing.com/th/id/R.5e6b252c484aca6fb88494c60ca90e10?rik=4JJ0CvqubSK9uw&riu=http%3a%2f%2fwww.ksllogistics.in%2fassets%2fimg%2fbike.png&ehk=tbmshkeWfJmVb2jt2tnUELn0KLtmorthkd2KhYhqOl0%3d&risl=&pid=ImgRaw&r=0'); /* Խոհարարի պատկեր */
+            background-size: cover;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: cook 5s infinite alternate;
+        }
+
+        .dish {
+            width: 80px;
+            height: 80px;
+            background-image: url('https://img.freepik.com/premium-photo/french-fries-sticker-ai-generated_860599-3509.jpg'); /* Ուտեստի պատկեր */
+            background-size: cover;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            opacity: 0;
+            animation: showDish 5s infinite alternate;
+        }
+
+        @keyframes cook {
+            0% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            100% {
+                transform: translateX(-50%) rotate(10deg);
+            }
+        }
+
+        @keyframes showDish {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <div class="chef"></div>
+        <div class="dish"></div>
+    </div>
+
+    <script>
+        // Այս հատվածում կարող եք ավելացնել JavaScript ֆունկցիաներ
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const chef = document.querySelector('.chef');
+    const dish = document.querySelector('.dish');
+
+    // Խոհարարի պատկերները
+    const chefImages = [
+        'https://example.com/chef1.png',
+        'https://example.com/chef2.png',
+        'https://example.com/chef3.png'
+    ];
+
+    // Ուտեստի պատկերները
+    const dishImages = [
+        'https://example.com/dish1.png',
+        'https://example.com/dish2.png',
+        'https://example.com/dish3.png'
+    ];
+
+    // Պատկերները փոփոխելու ֆունկցիա
+    function changeImages() {
+        // Խոհարարի պատկերի փոփոխություն
+        const randomChefImage = chefImages[Math.floor(Math.random() * chefImages.length)];
+        chef.style.backgroundImage = `url('${randomChefImage}')`;
+
+        // Ուտեստի պատկերի փոփոխություն
+        const randomDishImage = dishImages[Math.floor(Math.random() * dishImages.length)];
+        dish.style.backgroundImage = `url('${randomDishImage}')`;
+    }
+
+    // Անիմացիայի յուրաքանչյուր փուլից հետո պատկերի փոփոխություն
+    setInterval(changeImages, 5000); // Փոփոխել 5 վայրկնոս հետո
+});
+
+    </script>
+</body>
+</html>

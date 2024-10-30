@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest App</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #language-selector {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #language-selector button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #color-theme {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        #color-theme button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+
+        #color-theme button:nth-child(1) {
+            background-color: #ffafbd;
+        }
+
+        #color-theme button:nth-child(2) {
+            background-color: #2193b0;
+        }
+
+        #color-theme button:nth-child(3) {
+            background-color: #cc2b5e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="form-title">Register</h1>
+
+        <div id="language-selector">
+             <button onclick="setLanguage('hy')">🇦🇲</button>
+             <button onclick="setLanguage('en')">🇬🇧</button>
+           
+        </div>
+
+        <div id="color-theme">
+            <button onclick="setTheme('#ffafbd')"></button>
+            <button onclick="setTheme('#2193b0')"></button>
+            <button onclick="setTheme('#cc2b5e')"></button>
+        </div>
+
+        <form id="register-form" onsubmit="generateQRCode(); return false;">
+            <label id="first-name-label" for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" required>
+
+            <label id="last-name-label" for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" required>
+
+            <label id="phone-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <button type="submit"><a href="page2.html">Submit</a>
+            
+        </form>
+    </div>
+
+    <script>
+        function setLanguage(language) {
+            if (language === 'en') {
+                document.getElementById("form-title").textContent = "Register";
+                document.getElementById("first-name-label").textContent = "First Name";
+                document.getElementById("last-name-label").textContent = "Last Name";
+                document.getElementById("phone-label").textContent = "Phone Number";
+            } else if (language === 'hy') {
+                document.getElementById("form-title").textContent = "Գրանցում";
+                document.getElementById("first-name-label").textContent = "Անուն";
+                document.getElementById("last-name-label").textContent = "Ազգանուն";
+                document.getElementById("phone-label").textContent = "Հեռախոսահամար";
+            }
+        }
+
+        function setTheme(color) {
+            document.body.style.background = `linear-gradient(135deg, ${color} 0%, #fda085 100%)`;
+        }
+
+        function generateQRCode() {
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const phone = document.getElementById("phone").value;
+
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('phone', phone);
+
+            window.location.href = 'qrpage.html';
+        }
+    </script>
+</body>
+</html>

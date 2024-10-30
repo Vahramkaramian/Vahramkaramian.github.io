@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Խոհարարի Անիմացիա</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e3f2fd;
+            overflow: hidden;
+        }
+
+        .animation-container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .chef {
+            width: 100px;
+            height: 150px;
+            background-image: url('https://example.com/chef.png'); /* Խոհարարի պատկեր */
+            background-size: cover;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: cook 5s infinite alternate;
+        }
+
+        .dish {
+            width: 80px;
+            height: 80px;
+            background-image: url('https://example.com/dish.png'); /* Ուտեստի պատկեր */
+            background-size: cover;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            opacity: 0;
+            animation: showDish 5s infinite alternate;
+        }
+
+        @keyframes cook {
+            0% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            100% {
+                transform: translateX(-50%) rotate(10deg);
+            }
+        }
+
+        @keyframes showDish {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-container">
+        <div class="chef"></div>
+        <div class="dish"></div>
+    </div>
+
+    <script>
+        // Այս հատվածում կարող եք ավելացնել JavaScript ֆունկցիաներ
+    </script>
+</body>
+</html>

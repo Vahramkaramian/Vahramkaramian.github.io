@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Menu</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e1bee7 0%, #f8bbd0 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #language-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #language-selector button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .drink-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-basis: calc(33.333% - 40px);
+        }
+
+        .drink-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .drinks-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .order-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .order-section input {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .order-section button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .order-section button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="page-title">Drink Menu</h1>
+
+        <div id="language-selector">
+            <button onclick="setLanguage('hy')">🇦🇲</button>
+            <button onclick="setLanguage('en')">🇬🇧</button>
+            
+        </div>
+
+        <div class="drinks-container">
+            <div class="drink-card">
+                <img src="https://th.bing.com/th/id/R.80e4960f5e8e319eaf00c98a4fc96d53?rik=jTGuZWv9mTx5hA&pid=ImgRaw&r=0" alt="Drink 1">
+                <div class="price" id="price-drink1">Price: $5</div>
+            </div>
+            <div class="drink-card">
+                <img src="https://th.bing.com/th/id/R.7f18575c487580efa0ebdb8b6fcbb875?rik=efGgd0d1QGYzEA&riu=http%3a%2f%2fyegexoticpop.com%2fcdn%2fshop%2ffiles%2fimage_962a4516-7c3f-45d2-a971-399152ad1305.jpg%3fv%3d1687972901&ehk=Ubd67WsxvaPkl24h9i%2fqC2MRReUeqf07we9NwNgEax8%3d&risl=&pid=ImgRaw&r=0" alt="Drink 2">
+                <div class="price" id="price-drink2">Price: $6</div>
+            </div>
+            <div class="drink-card">
+                <img src="https://www.coca-cola.com/content/dam/onexp/gb/en/brands/fanta/Product-Information-fanta-orange.jpg" alt="Drink 3">
+                <div class="price" id="price-drink3">Price: $4</div>
+            </div>
+            <div class="drink-card">
+                <img src="https://th.bing.com/th/id/OIP.vHGzS_7hgtEFdPvpI6eBsgHaHa?rs=1&pid=ImgDetMain" alt="Drink 4">
+                <div class="price" id="price-drink4">Price: $7</div>
+            </div>
+            <div class="drink-card">
+                <img src="https://th.bing.com/th/id/OIP.6emp8KBYzsC-AU_tqQ1U_wAAAA?rs=1&pid=ImgDetMain" alt="Drink 5">
+                <div class="price" id="price-drink5">Price: $8</div>
+            </div>
+            <div class="drink-card">
+                <img src="https://loshusansupermarket.com/product_images/e/369/Canada_Dry_Ginger_Ale_Lemonade_12oz__16445_std.jpg" alt="Drink 6">
+                <div class="price" id="price-drink6">Price: $3</div>
+            </div>
+        </div>
+
+        <div class="order-section">
+            <h2 id="order-title">Place Your Order</h2>
+            <input type="text" id="order-input" placeholder="Enter your address...">
+            <button type="submit"><a href="onlineorder.html">Order Now</a>
+        </div>
+    </div>
+
+    <script>
+        function setLanguage(language) {
+            if (language === 'en') {
+                document.getElementById("page-title").textContent = "Drink Menu";
+                document.getElementById("order-title").textContent = "Place Your Order";
+                document.getElementById("price-drink1").textContent = "Price: $5";
+                document.getElementById("price-drink2").textContent = "Price: $6";
+                document.getElementById("price-drink3").textContent = "Price: $4";
+                document.getElementById("price-drink4").textContent = "Price: $7";
+                document.getElementById("price-drink5").textContent = "Price: $8";
+                document.getElementById("price-drink6").textContent = "Price: $3";
+            } else if (language === 'hy') {
+                document.getElementById("page-title").textContent = "Ըմպելիքների Ցուցակ";
+                document.getElementById("order-title").textContent = "Ձեր Հասցեն";
+                document.getElementById("price-drink1").textContent = "Գինը: 200֏";
+                document.getElementById("price-drink2").textContent = "Գինը: 240֏";
+                document.getElementById("price-drink3").textContent = "Գինը: 160֏";
+                document.getElementById("price-drink4").textContent = "Գինը: 280֏";
+                document.getElementById("price-drink5").textContent = "Գինը: 320֏";
+                document.getElementById("price-drink6").textContent = "Գինը: 120֏";
+            }
+        }
+
+        function placeOrder() {
+            const address = document.getElementById("order-input").value;
+            if (address) {
+                alert(`Your order has been placed to: ${address}`);
+                document.getElementById("order-input").value = '';
+            } else {
+                alert('Please enter your address!');
+            }
+        }
+    </script>
+</body>
+</html>

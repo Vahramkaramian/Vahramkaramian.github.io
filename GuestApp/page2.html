@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code and Bonuses</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            margin-bottom: 20px;
+        }
+
+        .bonuses {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #language-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #language-selector button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        #submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="language-selector">
+            <button onclick="setLanguage('en')">🇬🇧</button>
+            <button onclick="setLanguage('hy')">🇦🇲</button>
+        </div>
+        
+        <h1 id="qr-title">Your QR Code</h1>
+        <canvas id="qr-code"></canvas>
+        <div class="bonuses" id="bonus-text">You have <span id="bonus-amount"></span> bonus points</div>
+        <button type="submit"><a href="delevery.html">Online Order</a>
+    </div>
+
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <script>
+        // Language settings
+        let currentLanguage = 'en';
+
+        function setLanguage(language) {
+            currentLanguage = language;
+            updateText();
+        }
+
+        function updateText() {
+            if (currentLanguage === 'en') {
+                document.getElementById("qr-title").textContent = "Your QR Code";
+                document.getElementById("bonus-text").textContent = `You have ${document.getElementById('bonus-amount').textContent} bonus points`;
+                document.getElementById("submit-btn").textContent = "Submit";
+            } else if (currentLanguage === 'hy') {
+                document.getElementById("qr-title").textContent = "Ձեր QR Կոդը";
+                document.getElementById("bonus-text").textContent = `Դուք ունեք ${document.getElementById('bonus-amount').textContent} բոնուսային միավոր`;
+                document.getElementById("submit-btn").textContent = "Հաստատել";
+            }
+        }
+
+        function goToAnotherPage() {
+            window.location.href = 'anotherpage.html'; // Change to your desired page
+        }
+
+        // QR Code generation
+        const firstName = localStorage.getItem('firstName');
+        const lastName = localStorage.getItem('lastName');
+        const phone = localStorage.getItem('phone');
+
+        const qrCodeText = `Name: ${firstName} ${lastName}, Phone: ${phone}`;
+        QRCode.toCanvas(document.getElementById('qr-code'), qrCodeText, function (error) {
+            if (error) console.error(error);
+        });
+
+        const bonusAmount = Math.floor(Math.random() * 96) + 5;
+        document.getElementById('bonus-amount').textContent = bonusAmount;
+        updateText(); // Update the text to the current language
+    </script>
+</body>
+</html>
